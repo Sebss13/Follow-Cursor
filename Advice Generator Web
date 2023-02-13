@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>body{
+    background-color: rgb(13, 37, 61);
+}
+#container{
+    background-color: rgb(140, 140, 231);
+    display: block;
+    box-shadow: 30px 30px 30px;
+    margin: 30vh;
+    border-radius: 30px;
+    padding: 50px;
+}
+#quote{
+text-align: center;
+font-size: 50px;
+font-variant: small-caps;
+transition: 1s;
+}
+#autor{
+    text-align: right;
+    text-transform: capitalize;
+    font-style: italic;
+    margin-right: 50px;
+}</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No API quotes</title>
+</head>
+<body>
+    <div id="container">
+<div id="quote"></div>
+<div id="autor"></div>
+    </div>
+    <script>const adviceTxt =document.getElementById('quote')
+const url="https://api.adviceslip.com/advice"
+
+async function get(){
+    const res=await fetch(url)
+    const{slip:{id,advice}}=await res.json()
+    adviceTxt.innerText=advice
+}
+setTimeout(get,1000)
+</script>
+</body>
+</html>
